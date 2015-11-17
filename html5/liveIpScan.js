@@ -1,3 +1,9 @@
+/*  基于websocket进行ip扫描的javascript代码demo
+ *
+ *  1. 由于浏览器安全机制,js内无法获取到任何具体的返回信息
+ *  2. 只能基于默认超时时间20秒来判断是否连接到目标IP
+ *  3. 在超时之前,任何触发closed的链接都视为目标IP存活
+ */
 var ret = [];
 var netip = '1.2.3';
 var wsList = [];
