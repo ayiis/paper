@@ -65,6 +65,7 @@ true
 ## 学习线路
 
 三大核心： 选择器、DOM操作、事件
+
 功能： 动画效果、CSS操作、AJAX封装、工具方法
 
 ### 选择器
@@ -131,6 +132,7 @@ true
 
 
 进阶
+
 [jQuery 编程的最佳实践](http://www.cnblogs.com/Wayou/p/jquery_best_practise.html)
 
   [1]: http://www.w3school.com.cn/i/ct_htmltree.gif
