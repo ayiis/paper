@@ -154,7 +154,9 @@ consumer.commit()
 手动提交指定的消息
 
 ```python
-consumer.commit([TopicPartition(my_topic, msg.offset)])
+consumer.commit([
+    TopicPartition(my_topic, msg.offset)
+])
 ```
 
 ## 文档
