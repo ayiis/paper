@@ -51,7 +51,7 @@ print record_metadata # 打印发送结果
 
 ```
 
-发送结果
+*控制台输出结果*
 
 ```bash
 > RecordMetadata(topic=my.topic, partition=1, offset=0)
@@ -103,6 +103,11 @@ for msg in consumer: # 迭代器，等待下一条消息
 
 ```
 
+*控制台输出结果*
+
+```bash
+> ConsumerRecord(topic=u'my.topic', partition=1, offset=0, key=None, value='Hello kafka!')
+```
 
 ## 高级用法（消费者）
 
@@ -140,12 +145,6 @@ consumer.seek(TopicPartition(topic=my_topic, partition=1), 0) # 可以注册多�
 for msg in consumer: # 迭代器，等待下一条消息
     print msg # 打印消息
 
-```
-
-消息
-
-```bash
-> ConsumerRecord(topic=u'my.topic', partition=1, offset=0, key=None, value='Hello kafka!')
 ```
 
 ## 其他用法
