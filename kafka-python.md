@@ -51,6 +51,12 @@ print record_metadata # 打印发送结果
 
 ```
 
+发送结果
+
+```bash
+> RecordMetadata(topic=my.topic, partition=1, offset=0)
+```
+
 ## 消费者
 
 导入包
@@ -136,10 +142,15 @@ for msg in consumer: # 迭代器，等待下一条消息
 
 ```
 
+消息
+
+```bash
+> ConsumerRecord(topic=u'my.topic', partition=1, offset=0, key=None, value='Hello kafka!')
+```
 
 ## 其他用法
 
-立刻发送所有数据并等待发送完毕（阻塞）
+立刻发送所有数据并等待发送完毕
 
 ```python
 producer.flush()
