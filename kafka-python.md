@@ -43,9 +43,9 @@ producer = KafkaProducer(
     max_request_size = 1024 * 1024 * 20, # 每条消息的最大大小
 )
 
-record_metadata = producer.send(topic = 'my.topic', value = 'Hello kafka!') # 发送到指定的消息主题
+record_metadata = producer.send(topic = 'my.topic', value = 'Hello kafka!') # 发送到指定的消息主题（异步，不阻塞）
 
-record_metadata = record_metadata.get(timeout = 60) # 获取发送结果，超时时间为空则一直等待
+record_metadata = record_metadata.get(timeout = 60) # 获取发送结果（阻塞），超时时间为空则一直等待
 
 print record_metadata # 打印发送结果
 
@@ -86,7 +86,7 @@ from kafka import KafkaConsumer
 consumer = KafkaConsumer(
     bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
     group_id = 'my.group', # 消费组id
-    enable_auto_commit = True, # 每过一段时间自动提交所有已消费的消息（在迭代时）
+    enable_auto_commit = True, # 每过一段时间自动提交所有已消费的消息（在迭代时提交）
     auto_commit_interval_ms = 5000, # 自动提交的周期（毫秒）
 )
 
@@ -117,7 +117,7 @@ my_topic = 'my.topic' # 指定需要消费的主题
 consumer = KafkaConsumer(
     bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
     # group_id = 'my.group', # 消费组id无效，因为此时属于按分区消费
-    enable_auto_commit = True, # 每过一段时间自动提交所有已消费的消息（在迭代时）
+    enable_auto_commit = True, # 每过一段时间自动提交所有已消费的消息（在迭代时提交）
     auto_commit_interval_ms = 5000, # 自动提交的周期（毫秒）
 )
 
@@ -137,7 +137,13 @@ for msg in consumer: # 迭代器，等待下一条消息
 ```
 
 
-#### 异常处理
+## 其他用法
+
+立刻发送所有数据并等待发送完毕（阻塞）
+
+```python
+producer.flush()
+```
 
 读取下一条消息
 
