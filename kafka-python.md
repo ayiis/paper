@@ -182,3 +182,10 @@ consumer.commit([
 [kafka-python](https://github.com/dpkp/kafka-python)
 
 [kafka-python 文档](http://kafka-python.readthedocs.io/en/master/apidoc/KafkaConsumer.html)
+
+## 文章
+
+[用管道解释kafka](http://zqhxuyuan.github.io/2016/01/05/2016-01-05-Kafka-Unix/)
+
+
+
