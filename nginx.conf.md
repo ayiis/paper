@@ -75,6 +75,9 @@ http {
 
 ## 高级access_log日志
 
+1. 需要安装外部模块
+2. 启用此功能可能对性能产生较大影响，如无需要，不必启用
+
 ```bash
 http {
 
@@ -130,7 +133,7 @@ http {
 }
 ```
 
-## ref
+## REF
 
 [Nginx中文文档](http://www.nginx.cn/doc/)
 
