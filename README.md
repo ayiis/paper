@@ -9,3 +9,7 @@
 ## python
 
 [kafka-python](https://github.com/ayiis/paper/blob/master/kafka-python.md) kafka-python入门
+
+## other
+
+[nginx.conf](https://github.com/ayiis/paper/blob/master/nginx.conf.md) nginx配置介绍
