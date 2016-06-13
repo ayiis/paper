@@ -38,7 +38,7 @@ http {
     tcp_nodelay on;
 
     # 超过这个时间而服务端没有返回数据到 nginx ，则关闭连接
-    # 此项默认值为60，调用可能需要花费几分钟的外部接口时，增大此项
+    # 此项默认值为60，调用可能需要花费数分钟的外部接口时，增大此项
     proxy_read_timeout 600;
     # 超过这个时间而服务端没有响应 nginx 发送的数据，则关闭连接
     proxy_send_timeout 30;
@@ -46,9 +46,9 @@ http {
     send_timeout 30;
 
     # keepalive 的持续时间，设置太长会消耗服务器资源
-    # 如果是用于一次性请求的api接口，可以设置此项为0关闭 keepalive
+    # 如果是用于一次性请求的 api 接口，可以设置此项为0关闭 keepalive
     keepalive_timeout 30;
-    # 默认保持的 keepalive 的数量为100，并发量大的网站可以调高此项， api 接口可以注释掉此项
+    # 默认保持的 keepalive 的数量为100，并发访问量大的网站可以增大此项
     # 注意，此项不会高于 worker_connections
     keepalive_requests 10000;
     # 主动释放超时的连接
@@ -66,7 +66,7 @@ http {
     # 对IE6及以下的浏览器关闭压缩
     gzip_disable "msie6";
     
-    # 设置请求body的最大长度，默认为1M，文件服务器可以设为0解除大小限制
+    # 设置请求body的最大长度，默认为1M，如果需要上传大文件可以设置此项为0解除大小限制
     # 配置此项可以解决 "413 Request Entity Too Large" 的问题
     client_max_body_size 10M;
 
