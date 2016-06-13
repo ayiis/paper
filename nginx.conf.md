@@ -65,6 +65,10 @@ http {
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
     # 对IE6及以下的浏览器关闭压缩
     gzip_disable "msie6";
+    
+    # 设置请求body的最大长度，默认为1M，文件服务器可以设为0解除大小限制
+    # 配置此项可以解决 "413 Request Entity Too Large" 的问题
+    client_max_body_size 10M;
 
     # 不记录 access_log 可以提高性能
     access_log off;
