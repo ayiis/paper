@@ -127,7 +127,7 @@ my_topic = 'my.topic' # 指定需要消费的主题
 
 consumer = KafkaConsumer(
     bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
-    # group_id = 'my.group', # 消费组id无效，因为此时属于按分区消费
+    group_id = 'my.group', # 消费组id
     enable_auto_commit = True, # 每过一段时间自动提交所有已消费的消息（在迭代时提交）
     auto_commit_interval_ms = 5000, # 自动提交的周期（毫秒）
 )
