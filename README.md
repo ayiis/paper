@@ -16,4 +16,4 @@
 
 ## centos
 
-[[基] Centos-命令以及技巧.pdf](https://github.com/ayiis/paper/blob/master/%5B%E5%9F%BA%5D%20Centos-%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E6%8A%80%E5%B7%A7.pdf) centos常用命令备忘
+[Centos-命令以及技巧.pdf](https://github.com/ayiis/paper/blob/master/%5B%E5%9F%BA%5D%20Centos-%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E6%8A%80%E5%B7%A7.pdf) centos常用命令速查
