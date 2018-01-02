@@ -37,6 +37,7 @@ print "And we can reverse it:", all([
     d == a.encode('string_escape'),
 
     e == a.encode('hex'),
+
 ])
 
 ```
