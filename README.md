@@ -10,7 +10,7 @@
 
 [kafka-python](https://github.com/ayiis/paper/blob/master/kafka-python.md) kafka-python入门
 
-[python 编码速查](https://github.com/ayiis/paper/blob/master/python 编码速查.md) python 编码转换的速查手册
+[python 编码速查](https://github.com/ayiis/paper/blob/master/python%20%E7%BC%96%E7%A0%81%E9%80%9F%E6%9F%A5.md) python 编码转换的速查手册
 
 ## other
 
