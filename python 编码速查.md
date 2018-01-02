@@ -44,7 +44,7 @@ print "And we can reverse it:", all([
 
 + 输出：
 
-```code
+```bash
 a <type 'str'> 6 你好
 b <type 'unicode'> 2 你好
 c <type 'str'> 12 \u4f60\u597d
