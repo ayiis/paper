@@ -71,6 +71,11 @@ c <type 'str'> 12 \u4f60\u597d
 d <type 'str'> 24 \xe4\xbd\xa0\xe5\xa5\xbd
 e <type 'str'> 12 e4bda0e5a5bd
 
+aa <type 'str'> 6 你好
+bb <type 'unicode'> 2 你好
+cc <type 'str'> 12 \u4f60\u597d
+
+These is all the same: True
 These are all about the convert: True
 And we can reverse it: True
 ```
