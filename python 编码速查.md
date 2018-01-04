@@ -7,6 +7,7 @@ b = u'你好'
 c = '\u4f60\u597d'
 d = '\\xe4\\xbd\\xa0\\xe5\\xa5\\xbd'
 e = 'e4bda0e5a5bd'
+f = '\xe4\xbd\xa0\xe5\xa5\xbd'
 
 print
 print 'a', type(a), len(a), a
@@ -26,6 +27,8 @@ print "These are all about the convert:", all([
 
     a == e.decode('hex'),
 
+    a == f,
+
 ])
 
 print "And we can reverse it:", all([
@@ -37,6 +40,8 @@ print "And we can reverse it:", all([
     d == a.encode('string_escape'),
 
     e == a.encode('hex'),
+
+    a == f,
 
 ])
 
