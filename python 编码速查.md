@@ -7,7 +7,10 @@ b = u'你好'
 c = '\u4f60\u597d'
 d = '\\xe4\\xbd\\xa0\\xe5\\xa5\\xbd'
 e = 'e4bda0e5a5bd'
-f = '\xe4\xbd\xa0\xe5\xa5\xbd'
+
+aa = '\xe4\xbd\xa0\xe5\xa5\xbd'
+bb = u'\u4f60\u597d'
+cc = '\\u4f60\\u597d'
 
 print
 print 'a', type(a), len(a), a
@@ -16,6 +19,21 @@ print 'c', type(c), len(c), c
 print 'd', type(d), len(d), d
 print 'e', type(e), len(e), e
 print
+print 'aa', type(aa), len(aa), aa
+print 'bb', type(bb), len(b), bb
+print 'cc', type(cc), len(cc), cc
+
+print
+
+print "These are all the same:", all([
+
+    a == aa,
+
+    b == bb,
+
+    c == cc,
+
+])
 
 print "These are all about the convert:", all([
 
@@ -26,8 +44,6 @@ print "These are all about the convert:", all([
     a == d.decode('string_escape'),
 
     a == e.decode('hex'),
-
-    a == f,
 
 ])
 
@@ -41,9 +57,8 @@ print "And we can reverse it:", all([
 
     e == a.encode('hex'),
 
-    a == f,
-
 ])
+
 
 ```
 
