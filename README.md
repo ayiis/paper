@@ -16,7 +16,7 @@
 
 [nginx.conf](https://github.com/ayiis/paper/blob/master/nginx.conf.md) nginx配置介绍
 
-[country calling code](https://github.com/ayiis/paper/blob/master/country_calling_code.md) 可能是最全的电话区号列表
+[country calling code](https://github.com/ayiis/paper/blob/master/country_calling_code.md) 国际电话区号速查
 
 ## centos
 
