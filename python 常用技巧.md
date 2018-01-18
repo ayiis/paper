@@ -37,6 +37,13 @@
 
 ```python
 
+# 直接改变原对象的值
+>>> [1, 3, 5, 2, 4, 6].reserve()
+
+>>> list(reversed([1, 3, 5, 2, 4, 6]))
+
+[6, 4, 2, 5, 3, 1]
+
 >>> a = [1, 3, 5, 2, 4, 6]
 
 >>> a[::-1]
@@ -203,6 +210,103 @@ True
 
 
 all number is prime
+
+```
+
++ #### 字典合并
+
+
+```python
+
+>>> x = {'a': 1, 'b': 2}
+
+>>> y = {'b': 3, 'c': 4}
+
+>>> z = {'c': 5, 'd': 6}
+
+# 属性相同时，旧的值被新的值覆盖
+>>> dict( x.items() + y.items() + z.items())
+
+{'a': 1, 'c': 5, 'b': 3, 'd': 6}
+
+# 相加顺序不同会使结果不同
+>>> dict( z.items() + y.items() + x.items())
+
+{'a': 1, 'c': 4, 'b': 2, 'd': 6}
+
+# 用update方法在字典x上操作，直接改变字典x的值
+>>> x.update(y)
+
+```
+
++ #### 动态表达式
+
+
+```python
+
+>>> obj_string = '{"a":1,"b":2,"c":3}'
+
+>>> import ast
+
+>>> ast.literal_eval(obj_string)
+
+{'a': 1, 'c': 3, 'b': 2}
+
+>>> import json
+
+>>> json.loads(obj_string)
+
+{u'a': 1, u'c': 3, u'b': 2}
+
+>>> eval(obj_string)
+
+{'a': 1, 'c': 3, 'b': 2}
+
+```
+
++ #### 上下文管理 with
+
+
+```python
+
+# 自动管理上下文，不需要f.close()
+>>> with open('/tmp/a', 'a') as f:
+        f.write('hello world')
+
+```
+
++ #### 拆箱
+
+
+```python
+
+>>> def do_print(a, b): print a, b
+
+>>> do_print( *[1, 2] )
+
+1 2
+>>> do_print( **{"a": 3, "b": 4} )
+
+3 4
+>>> do_print( *(5, 6) )
+
+5 6
+```
+
++ #### 字符串拼接
+
+
+```python
+
+>>> print "%s say %6i hello to %s !" % ("James", 1.55, "Kate")
+
+James say      1 hello to Kate !
+>>> print "{name_a} say {time_t:>6.0f} hello to {name_b} !".format(name_a="James", time_t=1.55, name_b="Kate")
+
+James say      2 hello to Kate !
+>>> print "%(name_a)s say %(time_t)6i hello to %(name_b)s !" % {"name_a":"James", "time_t":1.55, "name_b":"Kate"}
+
+James say      1 hello to Kate !
 
 ```
 
