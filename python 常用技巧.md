@@ -239,18 +239,12 @@ all number is prime
 
 ```
 
-+ #### 动态表达式
++ #### 序列化字符串
 
 
 ```python
 
 >>> obj_string = '{"a":1,"b":2,"c":3}'
-
->>> import ast
-
->>> ast.literal_eval(obj_string)
-
-{'a': 1, 'c': 3, 'b': 2}
 
 >>> import json
 
@@ -259,6 +253,12 @@ all number is prime
 {u'a': 1, u'c': 3, u'b': 2}
 
 >>> eval(obj_string)
+
+{'a': 1, 'c': 3, 'b': 2}
+
+>>> import ast
+
+>>> ast.literal_eval(obj_string)
 
 {'a': 1, 'c': 3, 'b': 2}
 
@@ -310,6 +310,33 @@ James say      1 hello to Kate !
 
 ```
 
++ #### 默认字典
+
+
+```python
+
+>>> seq = range(1, 10)
+
+>>> zip(*[iter(seq)]*3)
+
+[(1, 2, 3), (4, 5, 6), (7, 8, 9)]
+
+```
+
++ #### 取列表中随机元素
+
+
+```python
+
+>>> import random
+
+>>> for x in range(10):
+        print random.choice(range(100)),
+
+89 13 96 35 23 68 74 49 87 32
+
+```
+
 + #### 分组
 
 
@@ -325,4 +352,14 @@ James say      1 hello to Kate !
 
 Other REF:
 
++ https://docs.python.org/
+
 + http://book.pythontips.com/en/latest/index.html
+
++ http://litaotao.github.io/python-materials
+
++ http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html
+
++ https://www.python.org/dev/peps/pep-0008/
+
+
