@@ -25,7 +25,7 @@ print 'cc', type(cc), len(cc), cc
 
 print
 
-print "These are all the same:", all([
+print 'These are all the same:', all([
 
     a == aa,
 
@@ -35,7 +35,7 @@ print "These are all the same:", all([
 
 ])
 
-print "These are all about the convert:", all([
+print 'These are all about the convert:', all([
 
     a == b.encode('utf8'),
 
@@ -47,7 +47,7 @@ print "These are all about the convert:", all([
 
 ])
 
-print "And we can reverse it:", all([
+print 'And we can reverse it:', all([
 
     b == a.decode('utf8'),
 

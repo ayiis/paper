@@ -97,6 +97,16 @@
 
 ```
 
++ #### [返回第一个符合条件的元素的下标](https://stackoverflow.com/questions/8197323/#8197564)
+
+```python
+
+>>> somelist = [1,2,3,5,6,7]
+
+>>> somelist.index(4) if 4 in somelist else None
+
+```
+
 + #### 对象可以直接用==比较（忽略数据类型）
 
 ```python
@@ -177,7 +187,7 @@ True
 
 ```
 
-+ #### [多维数组展开](https://stackoverflow.com/questions/952914/making-a-flat-list-out-of-list-of-lists-in-python/952952#952952)
++ #### [多维数组展开](https://stackoverflow.com/questions/952914/#952952)
 
 ```python
 
@@ -285,10 +295,12 @@ all number is prime
 >>> do_print( *[1, 2] )
 
 1 2
->>> do_print( **{"a": 3, "b": 4} )
+
+>>> do_print( *(3, 4) )
 
 3 4
->>> do_print( *(5, 6) )
+
+>>> do_print( **{"a": 5, "b": 6} )
 
 5 6
 ```
@@ -362,4 +374,4 @@ Other REF:
 
 + https://www.python.org/dev/peps/pep-0008/
 
-
++ http://python3-cookbook.readthedocs.io/zh_CN/latest/index.html
