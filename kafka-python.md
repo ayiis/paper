@@ -19,16 +19,16 @@ from kafka import KafkaProducer
 
 ```python
 producer = KafkaProducer(
-    bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
-    compression_type = 'gzip', # 传输时的压缩格式
-    max_request_size = 1024 * 1024 * 5, # 每条消息的最大大小 5M
+    bootstrap_servers = "192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092", # kafka集群地址
+    compression_type = "gzip", # 传输时的压缩格式
+    max_request_size = 1024 * 1024 * 5, # 每条消息的最大大小 5M, 需要小于等于kafka集群的 fetch.max.size 配置项
 )
 ```
 
 发送消息到kafka集群
 
 ```python
-producer.send(topic = 'my.topic', value = 'Hello kafka!') # 发送到指定的消息主题（异步，不阻塞）
+producer.send(topic = "my.topic", value = "Hello kafka!") # 发送到指定的消息主题（异步，不阻塞）
 ```
 
 ### 完整示例代码
@@ -38,12 +38,12 @@ producer.send(topic = 'my.topic', value = 'Hello kafka!') # 发送到指定的�
 from kafka import KafkaProducer
 
 producer = KafkaProducer(
-    bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
-    compression_type = 'gzip', # 传输时的压缩格式
+    bootstrap_servers = "192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092", # kafka集群地址
+    compression_type = "gzip", # 传输时的压缩格式
     max_request_size = 1024 * 1024 * 20, # 每条消息的最大大小
 )
 
-record_metadata = producer.send(topic = 'my.topic', value = 'Hello kafka!') # 发送到指定的消息主题（异步，不阻塞）
+record_metadata = producer.send(topic = "my.topic", value = "Hello kafka!") # 发送到指定的消息主题（异步，不阻塞）
 
 record_metadata = record_metadata.get(timeout = 60) # 获取发送结果（阻塞），超时时间为空则一直等待
 
@@ -69,8 +69,8 @@ from kafka import KafkaConsumer
 
 ```python
 consumer = KafkaConsumer(
-    bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
-    group_id = 'my.group', # 消费组id
+    bootstrap_servers = "192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092", # kafka集群地址
+    group_id = "my.group", # 消费组id
     enable_auto_commit = True, # 每过一段时间自动提交所有已消费的消息（在迭代时）
     auto_commit_interval_ms = 5000, # 自动提交的周期（毫秒）
 )
@@ -80,7 +80,7 @@ consumer = KafkaConsumer(
 指定消息的主题
 
 ```python
-consumer.subscribe(['my.topic']) # 消息的主题，可以指定多个
+consumer.subscribe(["my.topic"]) # 消息的主题，可以指定多个
 ```
 
 ### 完整示例代码
@@ -90,13 +90,13 @@ consumer.subscribe(['my.topic']) # 消息的主题，可以指定多个
 from kafka import KafkaConsumer
 
 consumer = KafkaConsumer(
-    bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
-    group_id = 'my.group', # 消费组id
+    bootstrap_servers = "192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092", # kafka集群地址
+    group_id = "my.group", # 消费组id
     enable_auto_commit = True, # 每过一段时间自动提交所有已消费的消息（在迭代时提交）
     auto_commit_interval_ms = 5000, # 自动提交的周期（毫秒）
 )
 
-consumer.subscribe(['my.topic']) # 消息的主题，可以指定多个
+consumer.subscribe(["my.topic"]) # 消息的主题，可以指定多个
 
 for msg in consumer: # 迭代器，等待下一条消息
     print msg # 打印消息
@@ -106,7 +106,7 @@ for msg in consumer: # 迭代器，等待下一条消息
 *控制台输出结果*
 
 ```bash
-> ConsumerRecord(topic=u'my.topic', partition=1, offset=0, key=None, value='Hello kafka!')
+> ConsumerRecord(topic=u"my.topic", partition=1, offset=0, key=None, value="Hello kafka!")
 ```
 
 ## 高级用法（消费者）
@@ -123,11 +123,11 @@ for msg in consumer: # 迭代器，等待下一条消息
 #encoding:utf8
 from kafka import KafkaConsumer, TopicPartition
 
-my_topic = 'my.topic' # 指定需要消费的主题
+my_topic = "my.topic" # 指定需要消费的主题
 
 consumer = KafkaConsumer(
-    bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
-    group_id = 'my.group', # 消费组id
+    bootstrap_servers = "192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092", # kafka集群地址
+    group_id = "my.group", # 消费组id
     enable_auto_commit = True, # 每过一段时间自动提交所有已消费的消息（在迭代时提交）
     auto_commit_interval_ms = 5000, # 自动提交的周期（毫秒）
 )
