@@ -2,30 +2,30 @@
 
 # encoding:utf8
 
-a = '你好'
-b = u'你好'
-c = '\u4f60\u597d'
-d = '\\xe4\\xbd\\xa0\\xe5\\xa5\\xbd'
-e = 'e4bda0e5a5bd'
+a = "你好"
+b = u"你好"
+c = "\u4f60\u597d"
+d = "\\xe4\\xbd\\xa0\\xe5\\xa5\\xbd"
+e = "e4bda0e5a5bd"
 
-aa = '\xe4\xbd\xa0\xe5\xa5\xbd'
-bb = u'\u4f60\u597d'
-cc = '\\u4f60\\u597d'
-
-print
-print 'a', type(a), len(a), a
-print 'b', type(b), len(b), b
-print 'c', type(c), len(c), c
-print 'd', type(d), len(d), d
-print 'e', type(e), len(e), e
-print
-print 'aa', type(aa), len(aa), aa
-print 'bb', type(bb), len(b), bb
-print 'cc', type(cc), len(cc), cc
+aa = "\xe4\xbd\xa0\xe5\xa5\xbd"
+bb = u"\u4f60\u597d"
+cc = "\\u4f60\\u597d"
 
 print
+print "a", type(a), len(a), a
+print "b", type(b), len(b), b
+print "c", type(c), len(c), c
+print "d", type(d), len(d), d
+print "e", type(e), len(e), e
+print
+print "aa", type(aa), len(aa), aa
+print "bb", type(bb), len(b), bb
+print "cc", type(cc), len(cc), cc
 
-print 'These are all the same:', all([
+print
+
+print "These are all the same:", all([
 
     a == aa,
 
@@ -35,27 +35,27 @@ print 'These are all the same:', all([
 
 ])
 
-print 'These are all about the convert:', all([
+print "These are all about the convert:", all([
 
-    a == b.encode('utf8'),
+    a == b.encode("utf8"),
 
-    a == c.decode('unicode-escape').encode('utf8'),
+    a == c.decode("unicode-escape").encode("utf8"),
 
-    a == d.decode('string_escape'),
+    a == d.decode("string_escape"),
 
-    a == e.decode('hex'),
+    a == e.decode("hex"),
 
 ])
 
-print 'And we can reverse it:', all([
+print "And we can reverse it:", all([
 
-    b == a.decode('utf8'),
+    b == a.decode("utf8"),
 
-    c == a.decode('utf8').encode('unicode-escape'),
+    c == a.decode("utf8").encode("unicode-escape"),
 
-    d == a.encode('string_escape'),
+    d == a.encode("string_escape"),
 
-    e == a.encode('hex'),
+    e == a.encode("hex"),
 
 ])
 
