@@ -13,11 +13,11 @@
 
 ```python
 
->>> x, y, z = [1, 3, 2]
+>>> x, y, z = [1, 2, 3]
 
->>> print x, y, z
+>>> print z, y, x
 
-1 3 2
+3 2 1
 
 ```
 
@@ -26,25 +26,13 @@
 ```python
 
 >>> def foo():
-        return 'abc', {}, []
+        return 1, 2, 3
 
 >>> x, y, z = foo()
 
 >>> print z, y, x
 
-[] {} abc
-
-```
-
-+ #### (列表推导)遍历列表，筛选出符合条件的元素
-
-```python
-
->>> a = [1, 2, 5, 4, 2, 1, 6]
-
->>> [x for x in a if x > 3]
-
-[5, 4, 6]
+3 2 1
 
 ```
 
@@ -65,7 +53,7 @@
 
 [6, 4, 2, 5, 3, 1]
 
->>> b = '135246'
+>>> b = "135246"
 
 >>> b[::-1]
 
@@ -93,11 +81,23 @@
 
 >>> from operator import itemgetter, attrgetter
 
->>> obj = [{'a': 1, 'c': 2, 'b': 1}, {'a': 2, 'c': 2, 'b': 1}, {'a': 2, 'c': 1, 'b': 2}]
+>>> obj = [{"a": 1, "c": 2, "b": 1}, {"a": 2, "c": 2, "b": 1}, {"a": 2, "c": 1, "b": 2}]
 
->>> sorted(obj, key=itemgetter('b', 'a'))
+>>> sorted(obj, key=itemgetter("b", "a"))
 
 [{'a': 1, 'b': 1, 'c': 2}, {'a': 2, 'b': 1, 'c': 2}, {'a': 2, 'b': 2, 'c': 1}]
+
+```
+
++ #### (列表推导)筛选列表中符合条件的元素
+
+```python
+
+>>> a = [1, 2, 5, 4, 2, 1, 6]
+
+>>> [x for x in a if x > 3]
+
+[5, 4, 6]
 
 ```
 
@@ -106,27 +106,31 @@
 ```python
 
 # 当没有符合条件的元素时，返回默认值，本例的默认值是 -1
->>> next((n for n in [1, 2, 5, 4, 1, 6] if n >= 3), -1)
+>>> somelist = [1, 2, 5, 4, 1, 6]
+
+>>> next((n for n in somelist if n >= 3), -1)
 
 5
 
 ```
 
-+ #### [返回第一个符合条件的元素的下标](https://stackoverflow.com/questions/8197323/#8197564)
++ #### [返回列表中指定元素的第一个下标](https://stackoverflow.com/questions/8197323/#8197564)
 
 ```python
 
->>> somelist = [1,2,3,5,6,7]
+>>> somelist = [1, 2, 5, 4, 1, 6]
 
 >>> somelist.index(4) if 4 in somelist else None
 
+3
+
 ```
 
-+ #### 对象可以直接用==比较（忽略数据类型）
++ #### 对象可以直接用`==`比较（忽略数据类型）
 
 ```python
 
->>> [True] == [1.0] == [0.99999999999999999] == [1]
+>>> [True] == [1.0] == [0.99999999999999995] == [1]
 
 True
 
@@ -152,14 +156,13 @@ set([2, 3, 5])
 
 set([2, 3])
 
-
 ```
 
 + #### 执行系统命令并获取返回
 
 ```python
 
->>> commands.getstatusoutput('whoami')
+>>> commands.getstatusoutput("whoami")
 
 (0, 'ayiis')
 
@@ -190,7 +193,7 @@ True
 
 ```python
 
->>> list1 = ['a', 'b', 'c', 'd']
+>>> list1 = ["a", "b", "c", "d"]
 
 >>> list2 = [1, 3, 5, 7]
 
@@ -223,15 +226,14 @@ True
 
 + #### [for-else 循环](https://docs.python.org/2/reference/compound_stmts.html#the-for-statement)
 
-
 ```python
 
 >>> for item in [1, 3, 5, 7, 9]:
         if item % 2 == 0:
-            print '%s is not prime' % item
+            print "%s is not prime" % item
             break
     else:
-        print 'all number is prime'
+        print "all number is prime"
 
 
 all number is prime
@@ -243,11 +245,11 @@ all number is prime
 
 ```python
 
->>> x = {'a': 1, 'b': 2}
+>>> x = {"a": 1, "b": 2}
 
->>> y = {'b': 3, 'c': 4}
+>>> y = {"b": 3, "c": 4}
 
->>> z = {'c': 5, 'd': 6}
+>>> z = {"c": 5, "d": 6}
 
 # 属性相同时，旧的值被新的值覆盖
 >>> dict( x.items() + y.items() + z.items())
@@ -273,6 +275,7 @@ all number is prime
 
 >>> import json
 
+# 此方法效率最高
 >>> json.loads(obj_string)
 
 {u'a': 1, u'c': 3, u'b': 2}
@@ -291,17 +294,15 @@ all number is prime
 
 + #### 上下文管理 with
 
-
 ```python
 
-# 自动管理上下文，不需要f.close()
->>> with open('/tmp/a', 'a') as f:
-        f.write('hello world')
+# 自动管理上下文，自动 f.close()
+>>> with open("/tmp/a", "a") as f:
+        f.write("hello world")
 
 ```
 
 + #### 拆箱
-
 
 ```python
 
@@ -390,3 +391,4 @@ Other REF:
 + https://www.python.org/dev/peps/pep-0008/
 
 + http://python3-cookbook.readthedocs.io/zh_CN/latest/index.html
+

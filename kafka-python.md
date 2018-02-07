@@ -21,7 +21,7 @@ from kafka import KafkaProducer
 producer = KafkaProducer(
     bootstrap_servers = '192.168.70.221:19092,192.168.70.222:19092,192.168.70.223:19092', # kafka集群地址
     compression_type = 'gzip', # 传输时的压缩格式
-    max_request_size = 1024 * 1024 * 20, # 每条消息的最大大小
+    max_request_size = 1024 * 1024 * 5, # 每条消息的最大大小 5M
 )
 ```
 
