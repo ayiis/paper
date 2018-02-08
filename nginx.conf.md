@@ -28,26 +28,36 @@ events {
 ## http模块
 ```bash
 http {
+    # 包含已定义的文件类型
+    include       mime.types;
+    # 默认文件类型为 数据流 一般浏览器会触发下载动作
+    default_type  application/octet-stream;
+
     # 不向客户端返回 nginx 的版本号，提高安全性
     server_tokens off;
     # 提高文件传输效率
     sendfile on;
     # 优化 sendfile 的传输效率
     tcp_nopush on;
-    # 提高实时传输速度
+    # 提高实时传输速度，设置为off可以减少带宽使用
     tcp_nodelay on;
 
     # 超过这个时间而服务端没有返回数据到 nginx ，则关闭连接
-    # 此项默认值为60，调用可能需要花费数分钟的外部接口时，增大此项
+    # 此项默认值为60，如果需要调用花费数分钟的服务，增大此项
     proxy_read_timeout 600;
     # 超过这个时间而服务端没有响应 nginx 发送的数据，则关闭连接
     proxy_send_timeout 30;
     # 超过这个时间而客户端没有响应 nginx 发送的数据，则关闭连接
     send_timeout 30;
 
+    # proxy_buffer_size <= proxy_busy_buffers_size < proxy_buffers
+    proxy_buffers   8 32k;
+    proxy_buffer_size  64k;
+    proxy_busy_buffers_size 128k;
+
     # keepalive 的持续时间，设置太长会消耗服务器资源
     # 如果是用于一次性请求的 api 接口，可以设置此项为0关闭 keepalive
-    keepalive_timeout 30;
+    keepalive_timeout 0;
     # 默认保持的 keepalive 的数量为100，并发访问量大的网站可以增大此项
     # 注意，此项不会高于 worker_connections
     keepalive_requests 10000;
@@ -56,19 +66,29 @@ http {
 
     # 启用 gzip 压缩，减少网络流量，提高传输效率
     gzip on;
-    # 如果数据小于 1024byte 则不压缩，因为压缩消耗 CPU
+    # 当数据小于 1024byte 时不压缩，减少压缩消耗的 CPU
     gzip_min_length 1024;
     # 压缩所有代理的请求
     gzip_proxied any;
+    # 压缩等级，用CPU换带宽
+    gzip_comp_level 9;
     # 对指定类型的资源启用压缩
     # 设置为 "*" 对所有类型的资源启用压缩
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
     # 对IE6及以下的浏览器关闭压缩
     gzip_disable "msie6";
-    
+
     # 设置请求body的最大长度，默认为1M，如果需要上传大文件可以设置此项为0解除大小限制
     # 配置此项可以解决 "413 Request Entity Too Large" 的问题
     client_max_body_size 10M;
+    # 这个值控制了可以被log的请求体$request_body的大小，
+    client_body_buffer_size 64k;
+
+    # header 的最大总长度，如果超出此值则使用 large_client_header_buffers
+    client_header_buffer_size 16k;
+    # 每个header长度不能超过 64k
+    # header 的最大总长度不能超过 4*64k = 256 k
+    large_client_header_buffers 4 64k;
 
     # 不记录 access_log 可以提高性能
     access_log off;
@@ -91,27 +111,23 @@ http {
             '"time_iso8601": "$time_iso8601", '
             '"remote_addr": "$remote_addr", '
             '"remote_user": "$remote_user", '
+            '"request_length": "$request_length", '
             '"body_bytes_sent": "$body_bytes_sent", '
             '"request_time": "$request_time", '
             '"status": "$status", '
             '"request": "$request", '
-            '"request_method": "$request_method", '
             '"http_referer": "$http_referer", '
-            '"http_x_forwarded_for": "$http_x_forwarded_for", '
             '"http_user_agent": "$http_user_agent", '
             '"request_body": "$request_body", '
-            '"upstream_addr": "$upstream_addr", '
             '"response_body": "$response_body", '
+            '"upstream_addr": "$upstream_addr", '
             '"upstream_status": "$upstream_status", '
             '"upstream_response_time": "$upstream_response_time", '
             '"server_addr": "$server_addr", '
             '"server_port": "$server_port", '
             '"server_name": "$server_name", '
-            '"username": "$http_username", '
-            '"user_name": "$http_user_name", '
             '"http_content_encoding": "$http_content_encoding", '
-            '"upstream_http_content_encoding": "$upstream_http_content_encoding", '
-            '"uri": "$uri" '
+            '"upstream_http_content_encoding": "$upstream_http_content_encoding"'
         '}\r\n';
 
     server {
