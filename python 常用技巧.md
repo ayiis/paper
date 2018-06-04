@@ -179,7 +179,7 @@ True
 
 ```
 
-+ #### 合并数组
++ #### 合并列表
 
 ```python
 
@@ -189,7 +189,7 @@ True
 
 ```
 
-+ #### 同时遍历多个数组
++ #### 同时遍历多个列表
 
 ```python
 
@@ -205,7 +205,7 @@ True
 
 ```
 
-+ #### [多维数组展开](https://stackoverflow.com/questions/952914/#952952)
++ #### [多维列表展开](https://stackoverflow.com/questions/952914/#952952)
 
 ```python
 
@@ -338,19 +338,6 @@ James say      1 hello to Kate !
 
 ```
 
-+ #### 默认字典
-
-
-```python
-
->>> seq = range(1, 10)
-
->>> zip(*[iter(seq)]*3)
-
-[(1, 2, 3), (4, 5, 6), (7, 8, 9)]
-
-```
-
 + #### 取列表中随机元素
 
 
@@ -365,7 +352,7 @@ James say      1 hello to Kate !
 
 ```
 
-+ #### 分组
++ #### 用zip分组
 
 
 ```python
@@ -377,6 +364,26 @@ James say      1 hello to Kate !
 [(1, 2, 3), (4, 5, 6), (7, 8, 9)]
 
 ```
+
+
++ #### 列表组合
+
+
+```python
+
+>>> from itertools import combinations
+
+>>> list(combinations([1, 2, 3, 4], 2))
+
+[(1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+
+>>> list(combinations([1, 2, 3, 4], 3))
+
+[(1, 2, 3), (1, 2, 4), (1, 3, 4), (2, 3, 4)]
+
+```
+
+
 
 Other REF:
 
