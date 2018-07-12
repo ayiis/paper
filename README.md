@@ -8,11 +8,13 @@
 
 ## python
 
+[python 常用技巧](https://github.com/ayiis/paper/blob/master/python%20%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7.md) 常用技巧速查
+
+[python 编码速查](https://github.com/ayiis/paper/blob/master/python%20%E7%BC%96%E7%A0%81%E9%80%9F%E6%9F%A5.md) 编码转换的速查手册
+
 [kafka-python](https://github.com/ayiis/paper/blob/master/kafka-python.md) kafka-python入门
 
-[python 常用技巧](https://github.com/ayiis/paper/blob/master/python%20%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7.md) python 常用技巧速查
-
-[python 编码速查](https://github.com/ayiis/paper/blob/master/python%20%E7%BC%96%E7%A0%81%E9%80%9F%E6%9F%A5.md) python 编码转换的速查手册
+[pymongo](https://github.com/ayiis/paper/blob/master/pymongo.md) 操作 mongodb 的简单例子
 
 ## other
 
