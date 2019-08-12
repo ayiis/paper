@@ -76,6 +76,9 @@
     Ctrl + D 关闭容器
     Ctrl + P + Q 退出容器
 
+    - 重命名容器
+        docker container rename CONTAINER NEW_NAME
+
 
 ## 封装自己的镜像：
 
@@ -118,6 +121,9 @@
             {
                 "registry-mirrors": ["https://registry.docker-cn.com"]
             }
+
+        - MacOS: https://www.jianshu.com/p/9fce6e583669
+            service docker start
 
     使用一次性方式下载国内仓库centos遇到问题
         REPOSITORY                              TAG                 IMAGE ID            CREATED             SIZE
