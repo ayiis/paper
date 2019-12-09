@@ -82,11 +82,3 @@ pip3 install -i https://pypi.ayiis.me/simple/ --no-deps --upgrade aytool
     MAC的python有bug，不建议部署在mac上
 
     https://github.com/pypiserver/pypiserver/issues/263
-
-That's great it works fine on yours.
-
-I just pulled the latest `pypi` image and tried again, and the exactly same thing happened, it still blocks my request for some reason. However, since I am the only one issue this situation, I suppose there may be something wrong within my MacOS.
-
-I closed this issue, if I dug deeper I'll be back with an update.
-
-Thanks for your time. Have a nice day.
