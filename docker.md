@@ -3,10 +3,11 @@
 
 # 1. 安装
 
+    yum -y install yum-utils.noarch
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     yum-config-manager --enable docker-ce-edge
     yum-config-manager --enable docker-ce-test
-    yum install docker-ce
+    yum -y install docker-ce
 
     systemctl start docker
 
@@ -79,6 +80,14 @@
     - 重命名容器
         docker container rename CONTAINER NEW_NAME
 
+    - mysql
+        docker run --name mysql -p 127.0.0.1:13306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
+
+    - mongodb
+        docker run --name mongodb -p 127.0.0.1:27017:27017 -v /data/mongodb:/data/db -d mongo
+
+    - 
+
 
 ## 封装自己的镜像：
 
@@ -123,7 +132,7 @@
             }
 
         - MacOS: https://www.jianshu.com/p/9fce6e583669
-            service docker start
+            - 使用 Docker.app 启动 docker 服务
 
     使用一次性方式下载国内仓库centos遇到问题
         REPOSITORY                              TAG                 IMAGE ID            CREATED             SIZE
@@ -148,6 +157,10 @@
     docker start no limited
         docker run -it --cap-add=NET_ADMIN --cap-add=NET_RAW centos:latest bash
 
+    is not shared from OS X and is not known to Docker.
+        https://stackoverflow.com/questions/45122459/docker-mounts-denied-the-paths-are-not-shared-from-os-x-and-are-not-known
+        --> Edit [Docker Preference] -> [File Sharing] -> [Add]
+
 # 4. 注意事项
 
     - run 和 start 的区别
@@ -157,6 +170,15 @@
     - /etc/resolv.conf 文件在每次start时会更新到跟宿主机一致
         通过 https://docs.docker.com/config/containers/container-networking/ 配置网络
 
-
     - 为 centos7 安装基本的组件
         yum -y install initscripts
+
+    - 为 ubuntu 安装基本的组件
+        apt-get update
+        apt-get install --reinstall build-essential
+
+    - 在macOS中，需要先启动 goo /mine/soft/Docker.app
+
+
+
+
