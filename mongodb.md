@@ -1,11 +1,11 @@
 
-高级查询几乎都是使用 aggregate 实现。
+几乎所有高级查询都是使用 aggregate 实现。
 
 mongodb 3.6 以后，find 可以使用 $expr 来引入操作符。（mongodb仍然在快速迭代）
 
 所有对字段的操作，都需要使用操作符来实现。
 
-感觉越来越是跟老牌的mysql没什么区别了，还是要处理各种关系。一旦需要处理关系，就比mysql难用得多了。
+感觉越来越是跟老牌的mysql没什么区别了，还是要处理各种关系。而一旦需要处理关系，mongodb就比mysql难用得多了。
 
 定位到字段里面的对象的元素: `$key.object_name`
 定位到字段里面的列表的元素: `{"$arrayElemAt": ["$key", 0]}`
@@ -46,7 +46,7 @@ db.myCollection.find({$expr: {$ne: ["$a1.a", "$a2.a"] } });
 
 ```
 
-* 查询 `val-1` 为某个值的记录
+* 查询 `val - 1` 的结果为某个值的记录
 
 ```
 db.myCollection.find({$expr:{$eq: [{$subtract: ["$val", 1]}, 101.2] }});

@@ -350,3 +350,22 @@
         reboot
 
     折腾了N遍的cuda驱动，完结撒花
+
+
+    (重装DNN之后) 界面登陆失败：
+        登陆界面 ctrl + alt + 1~7 => 打开shell
+        tail /var/log/auth.log -f
+        tail /var/log/syslog
+        cat /home/ayiis/.local/share/xorg/Xorg.0.log
+        cat ~/.xsession_error.log
+
+        https://unix.stackexchange.com/questions/246508/x-server-only-starts-as-root
+        https://bbs.archlinux.org/viewtopic.php?id=185597
+        https://unix.stackexchange.com/questions/149985/startx-cannot-open-dev-fb0-permission-denied
+
+        最终解决的方案：
+
+            vi /etc/X11/Xwrapper.config
+
+                allowed_users=anybody
+                needs_root_rights=yes

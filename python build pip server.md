@@ -49,15 +49,18 @@ setuptools.setup(
 
 ```shell
 
+cs /opt
+
 # 生成一个 .htpasswd 身份文件
     - yum install -y httpd-tools
-htpasswd -nb ayiis 123456 > ~/.htpasswd
+htpasswd -nb ayiis 123456 > .htpasswd
+mkdir packages && chmod 777 packages
 
 # 测试运行docker（无输出）
 docker run -d -p 8011:8080 pypiserver/pypiserver:latest
 
-# 后台启动运行
-docker run -d --name pypi -p 8011:8080 -v ~/.htpasswd:/data/.htpasswd pypiserver/pypiserver:latest -P .htpasswd packages
+# 后台启动运行，并且将 packages 映射到宿主机
+docker run -d --name pypi -p 8011:8080 -v /opt/pypi/.htpasswd:/data/.htpasswd -v /opt/pypi/packages:/data/packages pypiserver/pypiserver:latest -P .htpasswd packages
 
 # 上传 package (--skip-existing 跳过已经存在的package )
 pip3 install --user --upgrade twine

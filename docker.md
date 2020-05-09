@@ -76,17 +76,20 @@
 
     Ctrl + D 关闭容器
     Ctrl + P + Q 退出容器
-
     - 重命名容器
         docker container rename CONTAINER NEW_NAME
 
     - mysql
         docker run --name mysql -p 127.0.0.1:13306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
 
-    - mongodb
+    - mongodb (-v 需要指定绝对路径)
         docker run --name mongodb -p 127.0.0.1:27017:27017 -v /data/mongodb:/data/db -d mongo
 
-    - 
+    - 一次迁移docker容器的命令
+        scp cooker01:/home/deployer/python_project/aypass/trunk/ay_pypi.20200111.tar .
+        docker load --input ay_pypi.20200111.tar
+        docker start ay_pypi
+        docker run --name pypi -d ay_pypi:20200111
 
 
 ## 封装自己的镜像：
@@ -122,6 +125,8 @@
 
 
 # 3. 问题
+
+fca08fcf2a2ad91d
 
     使用国内仓库加快下载速度
         - 一次性[不推荐]: docker pull registry.docker-cn.com/library/centos
@@ -178,7 +183,5 @@
         apt-get install --reinstall build-essential
 
     - 在macOS中，需要先启动 goo /mine/soft/Docker.app
-
-
 
 

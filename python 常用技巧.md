@@ -304,6 +304,11 @@ all number is prime
 >>> with open("/tmp/a", "a") as f:
         f.write("hello world")
 
+# 多个 with
+>>> with open("/tmp/a", "w") as wfa, open("/tmp/b", "w") as wfb:
+        wfa.write("aa")
+        wfb.write("bb")
+
 ```
 
 + #### 拆箱
