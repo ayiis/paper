@@ -15,7 +15,7 @@
 
 >>> x, y, z = [1, 2, 3]
 
->>> print z, y, x
+>>> print(z, y, x)
 
 3 2 1
 
@@ -25,12 +25,11 @@
 
 ```python
 
->>> def foo():
-        return 1, 2, 3
+>>> def foo(): return 1, 2, 3;
 
 >>> x, y, z = foo()
 
->>> print z, y, x
+>>> print(z, y, x)
 
 3 2 1
 
@@ -41,7 +40,10 @@
 ```python
 
 # 直接改变原对象的值
->>> [1, 3, 5, 2, 4, 6].reserve()
+>>> a = [1, 3, 5, 2, 4, 6]
+>>> a.reverse()
+>>> a
+[6, 4, 2, 5, 3, 1]
 
 >>> list(reversed([1, 3, 5, 2, 4, 6]))
 
@@ -65,9 +67,9 @@
 
 ```python
 
->>> sorted([1, 2, 5, 4, 2, 1, 6], reverse=False)
+>>> sorted([1, 2, 5, 4, 2, 1, 6], reverse=True)
 
-[1, 1, 2, 2, 4, 5, 6]
+[6, 5, 4, 2, 2, 1, 1]
 
 >>> sorted([1, 2, 5, 4, 2, 1, 6], key=lambda x: -x)
 
@@ -124,9 +126,13 @@
 
 >>> somelist = [1, 2, 5, 4, 1, 6]
 
->>> somelist.index(4) if 4 in somelist else None
+>>> somelist.index(4) if 4 in somelist else -1
 
 3
+
+>>> somelist.index(9) if 9 in somelist else -1
+
+-1
 
 ```
 
@@ -166,7 +172,7 @@ set([2, 3])
 
 ```python
 
->>> commands.getstatusoutput("whoami")
+>>> subprocess.getstatusoutput("whoami")
 
 (0, 'ayiis')
 
@@ -203,7 +209,7 @@ True
 
 >>> list3 = [2, 4, 6, 8]
 
->>> print { x:(y * z) for x, y, z in zip(list1, list2, list3) }
+>>> print({x: (y * z) for x, y, z in zip(list1, list2, list3)})
 
 {'a': 2, 'c': 30, 'b': 12, 'd': 56}
 
@@ -213,14 +219,14 @@ True
 
 ```python
 
->>> list2 = [ [1, 2], [3, 4, 5] ]
+>>> list2 = [[1, 2], [3, 4, 5]]
 
 >>> [y for x in list2 for y in x]
 
 [1, 2, 3, 4, 5]
 
 # 看下面这个例子应能更好地理解这种写法
->>> list3 = [ [ [1, 2], [3] ], [ [4], [5, 6] ] ]
+>>> list3 = [[[1, 2], [3]], [[4], [5, 6]]]
 
 >>> [z for x in list3 for y in x for z in y]
 
@@ -234,11 +240,10 @@ True
 
 >>> for item in [1, 3, 5, 7, 9]:
         if item % 2 == 0:
-            print "%s is not prime" % item
+            print("%s is not prime" % item)
             break
     else:
-        print "all number is prime"
-
+        print("all number is prime")
 
 all number is prime
 
@@ -255,13 +260,13 @@ all number is prime
 
 >>> z = {"c": 5, "d": 6}
 
-# 属性相同时，旧的值被新的值覆盖
->>> dict( x.items() + y.items() + z.items())
+# 属性名相同时，旧值被新值覆盖，相加顺序影响结果（python3不支持）
+>>> dict(x.items() + y.items() + z.items())
 
 {'a': 1, 'c': 5, 'b': 3, 'd': 6}
 
 # 相加顺序不同会使结果不同
->>> dict( z.items() + y.items() + x.items())
+>>> dict(z.items() | y.items() | x.items())
 
 {'a': 1, 'c': 4, 'b': 2, 'd': 6}
 
@@ -315,17 +320,17 @@ all number is prime
 
 ```python
 
->>> def do_print(a, b): print a, b
+>>> def do_print(a, b): print(a, b)
 
->>> do_print( *[1, 2] )
+>>> do_print(*[1, 2])
 
 1 2
 
->>> do_print( *(3, 4) )
+>>> do_print(*(3, 4))
 
 3 4
 
->>> do_print( **{"a": 5, "b": 6} )
+>>> do_print(**{"a": 5, "b": 6})
 
 5 6
 ```
@@ -335,13 +340,13 @@ all number is prime
 
 ```python
 
->>> print "%s say %6i hello to %s !" % ("James", 1.55, "Kate")
+>>> print("%s say %6i hello to %s !" % ("James", 1.55, "Kate"))
 
 James say      1 hello to Kate !
->>> print "{name_a} say {time_t:>6.0f} hello to {name_b} !".format(name_a="James", time_t=1.55, name_b="Kate")
+>>> print("{name_a} say {time_t:>6.0f} hello to {name_b} !".format(name_a="James", time_t=1.55, name_b="Kate"))
 
 James say      2 hello to Kate !
->>> print "%(name_a)s say %(time_t)6i hello to %(name_b)s !" % {"name_a":"James", "time_t":1.55, "name_b":"Kate"}
+>>> print("%(name_a)s say %(time_t)6i hello to %(name_b)s !" % {"name_a": "James", "time_t": 1.55, "name_b": "Kate"})
 
 James say      1 hello to Kate !
 
@@ -354,10 +359,13 @@ James say      1 hello to Kate !
 
 >>> import random
 
->>> for x in range(10):
-        print random.choice(range(100)),
+>>> for x in range(5): print(random.choice(range(100)))
 
-89 13 96 35 23 68 74 49 87 32
+48
+37
+76
+66
+62
 
 ```
 
@@ -368,7 +376,7 @@ James say      1 hello to Kate !
 
 >>> seq = range(1, 10)
 
->>> zip(*[iter(seq)]*3)
+>>> list(zip(*[iter(seq)] * 3))
 
 [(1, 2, 3), (4, 5, 6), (7, 8, 9)]
 
