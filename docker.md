@@ -126,7 +126,6 @@
 
 # 3. 问题
 
-fca08fcf2a2ad91d
 
     使用国内仓库加快下载速度
         - 一次性[不推荐]: docker pull registry.docker-cn.com/library/centos
