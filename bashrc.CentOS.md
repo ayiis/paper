@@ -1,6 +1,6 @@
 ```bash
 #
-# System-wide .bashrc file for interactive bash(1) shells.
+# Put this in ~/.bashrc
 #
 
 # default settings

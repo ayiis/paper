@@ -22,8 +22,14 @@
 
 [country calling code](https://github.com/ayiis/paper/blob/master/country_calling_code.md) 国际电话区号速查
 
-## centos
+## CentOS
 
-[Bash 快捷键.pdf](https://github.com/ayiis/paper/blob/master/%5B%E7%B2%BE%5D%20Bash%20%E5%BF%AB%E6%8D%B7%E9%94%AE.pdf) Bash 快捷键，常用的都在这
+[Bash 快捷键.pdf](https://github.com/ayiis/paper/blob/master/%5B%E7%B2%BE%5D%20Bash%20%E5%BF%AB%E6%8D%B7%E9%94%AE.pdf) Bash/Shell 快捷键，常用的都在这
 
-[Centos-命令以及技巧.pdf](https://github.com/ayiis/paper/blob/master/Centos-%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E6%8A%80%E5%B7%A7.pdf) centos常用命令速查
+[Centos-命令以及技巧.pdf](https://github.com/ayiis/paper/blob/master/Centos-%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E6%8A%80%E5%B7%A7.pdf) CentOS 常用命令速查
+
+[bashrc.CentOS.md](https://github.com/ayiis/paper/blob/master/bashrc.CentOS.md) CentOS 的 Shell 的配置文件
+
+## MacOS
+
+[bashrc.MacOS.md](https://github.com/ayiis/paper/blob/master/bashrc.MacOS.md) MacOS 的 Shell 的配置文件
