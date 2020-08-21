@@ -49,7 +49,7 @@ setuptools.setup(
 
 ```shell
 
-cs /opt
+cd /opt/pypi
 
 # 生成一个 .htpasswd 身份文件
     - yum install -y httpd-tools
