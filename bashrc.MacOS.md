@@ -74,6 +74,7 @@
     alias rpy='command find . -name "*.pyc"|xargs rm -f'
     alias npp='stdbuf -o0 nohup python -u app.py >nohup.out 2>&1 &'
     alias pipi='pip3 install -i https://pypi.ayiis.me/simple/ --no-deps --upgrade'
+    alias jpn='jupyter notebook'
 }
 
 # useful hotkey

@@ -44,7 +44,7 @@
 untracked | staged | git add [FILE]
 staged | untracked | git rm --cached [FILE]
 staged | 删除且不保留文件 | git rm -f [FILE]
-tracked | untracked | git rm --cached [FILE]
+tracked | untracked | git rm --cached [FILE] 只删除暂存区，不删除工作区
 tracked | modified | 修改文件 touch
 modified | tracked | git checkout -- [FILE] 从版本库恢复 <br>git checkout HEAD -- [FILE] 从上一次提交恢复
 modified | staged |  git add [FILE]

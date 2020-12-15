@@ -1,4 +1,40 @@
 
+## 基本操作
+
++ #### 字符串拼接
+
+```python
+print(
+    "aaa""bbb"
+    "ccc" "ddd"
+)
+# >>> aaabbbcccddd
+```
+
+## 主要是列表和字典的操作
+
++ #### [列表修改](https://docs.python.org/3/library/stdtypes.html#mutable-sequence-types)
+
+```python
+
+alist = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# 删除元素: 赋值为空列表(只要是iterable都可以)
+alist[2:8] = []
+# >>> [1, 2, 9]
+# 或调用删除方法
+del alist[2:8]
+# >>> [1, 2, 9]
+
+# 分步赋值，元素个数必须相同，所以不能用于删除元素
+alist[2:8:2] = [0, 0, 0]
+# >>> [1, 2, 0, 4, 0, 6, 0, 8, 9]
+# 分步删除
+del alist[2:8:2]
+# >>> [1, 2, 4, 6, 8, 9]
+
+```
+
 + #### 列表去重
 
 ```python
@@ -300,6 +336,18 @@ True
         print("all number is prime")
 
 all number is prime
+
+```
+
++ #### [序列解包](http://python.iswbm.com/en/latest/c01/c01_07.html#id5)
+
+```python
+
+a, b, *rest = [1, 2, 3, 4, 5]
+# >>> a = 1, b = 2, rest = [3, 4, 5]
+
+a, *mid, c = [1, 2, 3, 4, 5]
+# >>> a = 1, middle = [2, 3, 4], c = 5
 
 ```
 

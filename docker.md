@@ -85,6 +85,9 @@
     - mongodb (-v 需要指定绝对路径)
         docker run --name mongodb -p 127.0.0.1:27017:27017 -v /data/mongodb:/data/db -d mongo
 
+        如果断电重启失败，尝试：
+            mongod --dbpath /data/db --repair
+
     - 一次迁移docker容器的命令
         scp cooker01:/home/deployer/python_project/aypass/trunk/ay_pypi.20200111.tar .
         docker load --input ay_pypi.20200111.tar

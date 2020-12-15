@@ -1,6 +1,63 @@
 ```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-# encoding:utf8
+raw_string = ("你好", u"你好", "\u4f60\u597d", u"\u4f60\u597d")
+encodings = {
+    "unicode": (
+        (b"\\u4f60\\u597d", ),
+        lambda x: x.encode("unicode-escape"),
+        lambda y: y.decode("unicode_escape"),
+    ),
+    "utf8": (
+        (b"\xe4\xbd\xa0\xe5\xa5\xbd", ),
+        lambda x: x.encode("utf8"),
+        lambda y: y.decode("utf8"),
+    ),
+    "latin1 + utf8": (
+        ("ä½\xa0å¥½", "\xe4\xbd\xa0\xe5\xa5\xbd"),
+        lambda x: x.encode("utf8").decode("latin1"),
+        lambda y: y.encode("latin1").decode("utf8"),
+    ),
+    "unicode + latin1": (
+        ("\\u4f60\\u597d", ),
+        lambda x: x.encode("unicode-escape").decode("latin1"),
+        lambda y: y.encode("latin1").decode("unicode_escape"),
+    ),
+    "utf8 + latin1": (
+        ("\\xe4\\xbd\\xa0\\xe5\\xa5\\xbd", ),
+        lambda x: x.encode("utf8").decode("latin1").encode("unicode-escape").decode("latin1"),
+        lambda y: y.encode("latin1").decode("unicode-escape").encode("latin1").decode("utf8"),
+    ),
+    "hex": (
+        ("e4bda0e5a5bd", ),
+        lambda x: x.encode("utf8").hex(),
+        lambda y: bytes.fromhex(y).decode("utf8"),
+    ),
+}
+
+
+rs = raw_string[0]
+for encode_type in encodings:
+
+    good = True
+    encode = encodings[encode_type][1]
+    decode = encodings[encode_type][2]
+
+    for val in encodings[encode_type][0]:
+        assert encode(rs) == val
+        assert decode(val) == rs
+
+    print("Checked encode_type: %s" % (encode_type))
+
+print("Done!")
+
+```
+
+
+```python
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 
 a = "你好"
 b = u"你好"

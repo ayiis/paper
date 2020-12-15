@@ -78,6 +78,9 @@
 
     # start ss server
     alias sserver='python /opt/sserver/sssrc/server.py -c /opt/sserver/ss.conf -d start'
+
+    # keep ssh jumpper alive
+    alias live='while (true); do date && sleep 60 ; done'
 }
 
 # for CentOS

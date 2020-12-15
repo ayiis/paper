@@ -131,7 +131,7 @@ $dateFromString / $dateToString: 日期转换
     默认格式 "%Y-%m-%dT%H:%M:%S.%LZ"
     参考: https://docs.mongodb.com/manual/reference/operator/aggregation/dateFromString/
 
-比较操作符: $ne / $lt < $lte <= $eq <= $gt < $gte
+比较操作符: $ne / $lt < $lte <= $eq <= $gte < $gt
 
 $range 生成一个整数的列表
     eg. 判断值在指定范围的整数列表里 {$expr:{$in: ["$val", {$range: [0, 100] }]}}
