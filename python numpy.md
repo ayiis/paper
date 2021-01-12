@@ -30,10 +30,10 @@ np.empty((2, 5), dtype=np.int)
 # 创建一个 2h 5w 的空字符串数组
 np.full((2, 5), "", dtype=np.object)
 
-# 创建指定 range 的数组 start <= step < end
+# 创建指定 range 的数组 start <= N < end
 np.arange(0, 2, 0.3)
 
-# 创建一个平均切分x份的数组
+# 创建一个平均切分 N 份的数组
 np.linspace(0, 2.5, 11)
 
 # 创建一个随机数数组
@@ -56,6 +56,14 @@ arr.size, arr.shape, arr.dtype
 """
     基本操作
 """
+# 一维展开
+arr.flatten()
+# 插入、增加、删除
+np.append(arr, [1, 2, 3, 4, 5])
+np.insert(arr, 0, [1, 2, 3, 4, 5])
+np.delete(arr, (2, 3))
+
+
 # 结构重组
 arr.reshape(1, 6)
 # 结构倒转
@@ -79,10 +87,47 @@ arr[arr < 0.5]
 
 ```
 
+## 奇怪的知识
+
+seed 一样时，生成的随机数永远一样（在任何环境）
+
+```code
+np.random.seed(0)
+np.random.choice(10, (3, 5))
+```
 
 
 
+```python
+import numpy as np
+import pandas as pd
+np.random.seed(0)
+np.random.choice(np.arange(-2, 3, 0.02), (40, 5))
+price_range = np.random.choice(np.arange(-2, 3, 0.02), (40, 5))
+date_range = pd.date_range("20190101", periods=365)
+
+df = pd.DataFrame(date_range, columns=["date"])
+
+pf = pd.DataFrame(price_range)
+pf[5], pf[6] = 0, 0
+price_range2 = pf.to_numpy().flatten()
+df["rate"] = np.insert(price_range2, 0, [np.nan] * (df.shape[0] - price_range2.size))
 
 
+class G: raw = 1.0
 
 
+def rea(x):
+    if np.isnan(x):
+        return np.nan
+    G.raw = G.raw * (1 + x / 100)
+    return G.raw
+
+
+df["price"] = df["rate"].map(rea)
+
+pd.options.plotting.backend = "plotly"
+fig = df[["date", "price"]].plot.line(y="price", x="date")
+fig.show()
+
+```

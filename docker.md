@@ -54,6 +54,10 @@
     - remove all docker images
         docker rmi $(docker images -q)
 
+    - remove all exited container
+        docker ps -a -f status=exited
+        docker rm $(docker ps -a -f status=exited -q)
+
     - clear everything unused:
         docker ps -q | xargs -r docker stop ; docker system purge -a
 
