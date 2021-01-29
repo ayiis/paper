@@ -11,6 +11,13 @@ print(
 # >>> aaabbbcccddd
 ```
 
++ #### map的使用
+
+```python
+sum(map(int, "123456789"))
+# >>> 45
+```
+
 ## 主要是列表和字典的操作
 
 + #### [列表修改](https://docs.python.org/3/library/stdtypes.html#mutable-sequence-types)
@@ -255,6 +262,17 @@ set([2, 3])
 >>> (lambda x, y: x + y)(5, 3)
 
 8
+
+```
+
++ 嵌套 lambda 表达式
+
+```python
+
+>>> ccc = lambda x: (lambda y: y * 5)(x + 2)
+>>> ccc(4)
+
+30
 
 ```
 

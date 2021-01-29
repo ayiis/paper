@@ -12,6 +12,9 @@ panda 读取CSV较快
         pd.DataFrame(dbs["test"]["col"].find({}))
 ```
 
+读取无头的 xlsx
+pd.read_excel("/tmp/tiktok_interface_result.xlsx", names=["a", "b", "c", "d", "e", "f"], header=None)
+
 
 ## 数据结构
 

@@ -127,8 +127,6 @@
         重启DNS解析器：
             systemctl restart systemd-resolved
 
-        瞎几把乱改，真是垃圾
-
     - NO_PUBKEY
     - Err:4 https://nvidia.github.io/libnvidia-container/ubuntu18.04/amd64  InRelease
     - The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED91CA3AC1160CD
@@ -350,7 +348,6 @@
         reboot
 
     折腾了N遍的cuda驱动，完结撒花
-
 
     (重装DNN之后) 界面登陆失败：
         登陆界面 ctrl + alt + 1~7 => 打开shell

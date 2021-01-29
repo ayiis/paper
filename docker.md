@@ -7,7 +7,7 @@
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     yum-config-manager --enable docker-ce-edge
     yum-config-manager --enable docker-ce-test
-    yum -y install docker-ce
+    yum -y install docker-ce    // 外网，可能会超时，需要多重试几次
 
     systemctl start docker
 
