@@ -26,6 +26,9 @@ cat 1 2 3 4 > whole.file
 # 输出文件尾部最后100行,并实时更新
 tail -fn 100 filename.log
 
+# 跳过开始的100行
+tail -n +100 filename.log
+
 # 寻找所有可打印的字符串(连续4个字符以上)
 strings -4 /bin/ls | less
 
@@ -58,8 +61,11 @@ stdbuf -o0 nohup python -u app.py >nohup.out 2>&1 &
     find '/tmp' |xargs grep -r 'import' {}
 
     # 递归删除目录下所有 .pyc 文件
-    find . -type f -name "*.pyc" | xargs rm -f
+    find . -type f -name "*.pyc" -exec rm -f {} +
 }
+
+
+find . -type f | xargs -I{} rm -rf \'{}\'
 
 # 计算 md5
 md5sum -t filename.zip
@@ -81,7 +87,7 @@ md5sum -t filename.zip
     # 打包
     tar cf trunk.tar *
 
-    # 静默解压到指定目录
+    # 静默解压到指定目录 (不能自动创建目录)
     tar xf filename.tar.gz -C /targetdir/
 
     # 合并解压
@@ -182,6 +188,10 @@ tcpdump tcp dst ayiis.me 443 and tcp dst ayiis.me 80
 
     route -n get www.baidu.com
 }
+
+# 查找软链接的最终指向
+readlink -f /usr/local/bin/python
+
 ```
 
 #### 用户管理
